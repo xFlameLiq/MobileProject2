@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_home">
+
+    <fragment
+        android:id="@+id/nav_home"
+        android:name="com.example.mobileproject.ui.home.HomeFragment"
+        android:label="@string/menu_home"
+        tools:layout="@layout/fragment_home" />
+
+    <fragment
+        android:id="@+id/nav_gallery"
+        android:name="com.example.mobileproject.ui.gallery.GalleryFragment"
+        android:label="@string/menu_gallery"
+        tools:layout="@layout/fragment_gallery" />
+
+    <fragment
+        android:id="@+id/nav_slideshow"
+        android:name="com.example.mobileproject.ui.slideshow.SlideshowFragment"
+        android:label="Calendar "
+        tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/fragment_subjects"
+        android:name="com.example.mobileproject.fragment_subjects"
+        android:label="Subjects"
+        tools:layout="@layout/fragment_subjects" />
+    <fragment
+        android:id="@+id/fragment_contacts"
+        android:name="com.example.mobileproject.fragment_contacts"
+        android:label="Contacts"
+        tools:layout="@layout/fragment_contacts" />
+    <fragment
+        android:id="@+id/fragment_location"
+        android:name="com.example.mobileproject.fragment_location"
+        android:label="Location"
+        tools:layout="@layout/fragment_location" />
+</navigation>

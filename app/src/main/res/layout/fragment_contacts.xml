@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment_contacts">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/txtTitleSubject2"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="#F78F1F"
+            android:gravity="center"
+            android:text="@string/titleContacts"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Contacto general"
+            android:textSize="34sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lbShowInfoStudent" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="349dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="26dp"
+            android:text="Dierector: Akira Abraham Lozano Ocegueda"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="349dp"
+            android:layout_height="35dp"
+            android:text="Telefono: 33 36413250 ext. 271"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="349dp"
+            android:layout_height="35dp"
+            android:text="Correo: direccion.plantel.col@ceti.mx"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="349dp"
+            android:layout_height="60dp"
+            android:text="Dirección: Calle Nueva Escocia # 1885, Col. Providencia 5ta Sección, C.P.44638, Guadalajara, Jalisco, México."
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+        <EditText
+            android:id="@+id/txtRegistro"
+            android:layout_width="186dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="68dp"
+            android:layout_marginTop="10dp"
+            android:ems="10"
+            android:hint="Ej. 21110101"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleSubject2" />
+
+        <Button
+            android:id="@+id/btnFindStudent"
+            android:layout_width="91dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="#0067B2"
+            android:text="Ver"
+            app:layout_constraintStart_toEndOf="@+id/txtRegistro"
+            app:layout_constraintTop_toBottomOf="@+id/txtTitleSubject2" />
+
+        <TextView
+            android:id="@+id/lbShowInfoStudent"
+            android:layout_width="278dp"
+            android:layout_height="257dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/kanit"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtRegistro" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>
