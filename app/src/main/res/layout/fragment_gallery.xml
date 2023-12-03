@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondogradient"
     tools:context=".ui.gallery.GalleryFragment">
 
     <ScrollView
@@ -22,9 +21,9 @@
                 android:layout_height="48dp"
                 android:layout_marginLeft="0dp"
                 android:layout_marginBottom="20dp"
-                android:background="#F78F1F"
+                android:background="#FAB440"
                 android:gravity="center"
-                android:text="@string/gallery"
+                android:text="Galería CETI Colomos"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
@@ -91,9 +90,9 @@
                 android:layout_marginLeft="0dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="20dp"
-                android:background="#F78F1F"
+                android:background="#07143F"
                 android:gravity="center"
-                android:text="@string/galleryDesc"
+                android:text="¡Haz click en las imágenes para ver su descripción!"
                 android:textAlignment="center"
                 android:textColor="#FFFFFF"
                 android:textSize="20sp"
@@ -149,6 +148,5 @@
                 android:src="@mipmap/futbol" />
         </LinearLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
