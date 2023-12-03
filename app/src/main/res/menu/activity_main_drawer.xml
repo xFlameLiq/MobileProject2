@@ -32,6 +32,6 @@
         <item
             android:id="@+id/notification"
             android:icon="@drawable/baseline_add_alarm_24"
-            android:title="Agendar" />
+            android:title="Alarm" />
     </group>
 </menu>
