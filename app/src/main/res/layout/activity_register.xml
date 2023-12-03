@@ -186,7 +186,7 @@
         android:layout_marginTop="676dp"
         android:text="¿Ya tienes una cuenta?"
         android:textAlignment="center"
-        android:textColor="#FF070707"
+        android:textColor="#fff"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.475"
         app:layout_constraintStart_toStartOf="parent"
@@ -218,7 +218,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.867" />
+        app:layout_constraintVertical_bias="0.868" />
 
     <Button
         android:id="@+id/btnGoToLogin"
@@ -244,9 +244,7 @@
         android:textColor="#FFF"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.074"
         tools:layout_editor_absoluteX="96dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
