@@ -1,6 +1,8 @@
 package com.example.mobileproject.ui.home;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -22,8 +24,9 @@ import com.example.mobileproject.databinding.FragmentHomeBinding;
 public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
-    private SesionUser sesionUser;
     private TextView txtDatos, txtBienvenida;
+    private SharedPreferences sp;
+    private String name;
 
     @SuppressLint("ResourceType")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -31,17 +34,18 @@ public class HomeFragment extends Fragment {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
-        sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
+        //sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+        sp = requireActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
+        name = sp.getString("name", "");
 
-        int verificador = (sesionUser.users.returnUser());
         txtBienvenida = binding.txtBienvenida;
         txtDatos = binding.txtDatos;
 
         txtDatos.setText("");
-        txtBienvenida.setText("Bienvenido " + sesionUser.users.user[verificador].getNombre() + " " + sesionUser.users.user[verificador].getApellido());
+        txtBienvenida.setText("Bienvenido " + "prueba" + " " + "prueba");
 
         TableLayout tableLayout = root.findViewById(R.id.tableLayout);
 
@@ -74,17 +78,17 @@ public class HomeFragment extends Fragment {
             switch (i) {
 
                 case 0:
-                    data1 = createTableCell("Nombre: " + sesionUser.users.user[verificador].getNombre(), false);
+                    data1 = createTableCell("Nombre: " + name, false);
                     dataRow.addView(data1);
                     break;
 
                 case 1:
-                    data1 = createTableCell("Apellido: " + sesionUser.users.user[verificador].getApellido(), false);
+                    data1 = createTableCell("Apellido: " , false);
                     dataRow.addView(data1);
                     break;
 
                 case 2:
-                    data1 = createTableCell("ID: " + sesionUser.users.user[verificador].getRegistro(), false);
+                    data1 = createTableCell("ID: " , false);
                     dataRow.addView(data1);
                     break;
             }
@@ -94,17 +98,17 @@ public class HomeFragment extends Fragment {
             switch (i) {
 
                 case 0:
-                    data2 = createTableCell("Personal: " + sesionUser.users.user[verificador].getEmail(), false);
+                    data2 = createTableCell("Personal: ", false);
                     dataRow.addView(data2);
                     break;
 
                 case 1:
-                    data2 = createTableCell("Gmail: a" + sesionUser.users.user[verificador].getRegistro() + "@ceti.mx", false);
+                    data2 = createTableCell("Gmail: a" + "@ceti.mx", false);
                     dataRow.addView(data2);
                     break;
 
                 case 2:
-                    data2 = createTableCell("Hotmail: A" + sesionUser.users.user[verificador].getRegistro() + "@live.ceti.mx", false);
+                    data2 = createTableCell("Hotmail: A" + "@live.ceti.mx", false);
                     dataRow.addView(data2);
                     break;
             }
@@ -114,7 +118,7 @@ public class HomeFragment extends Fragment {
             switch (i) {
 
                 case 0:
-                    data3 = createTableCell("Grado: " + sesionUser.users.user[verificador].getGrado(), false);
+                    data3 = createTableCell("Grado: ", false);
                     dataRow.addView(data3);
                     break;
 
@@ -124,7 +128,7 @@ public class HomeFragment extends Fragment {
                     break;
 
                 case 2:
-                    data3 = createTableCell("FEB-JUN 2023", false);
+                    data3 = createTableCell("AGO-DIC 2023", false);
                     dataRow.addView(data3);
                     break;
             }

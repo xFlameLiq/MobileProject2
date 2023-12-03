@@ -1,6 +1,8 @@
 package com.example.mobileproject;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,13 +26,14 @@ public class MenuLateralActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMenuLateralBinding binding;
     private SesionUser sesionUser;
-
+    SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         sesionUser = (SesionUser) getIntent().getSerializableExtra("User");
         //String mostrar = sesionUser.users.getUsers();
+        sp = getApplicationContext().getSharedPreferences("sesion", Context.MODE_PRIVATE);
         //Toast.makeText(this, mostrar, Toast.LENGTH_SHORT).show();
 
         binding = ActivityMenuLateralBinding.inflate(getLayoutInflater());
@@ -83,10 +86,10 @@ public class MenuLateralActivity extends AppCompatActivity {
     }
 
     public void logout() {
-        Intent logout = new Intent(this, LoginActivity.class);
-        logout.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        logout.putExtra("User", sesionUser);
-        startActivity(logout);
-        finish();
+        Intent login = new Intent(this, MainActivity.class);
+        SharedPreferences.Editor editor = sp.edit();
+        editor.putString("userSesion", "");
+        editor.commit();
+        startActivity(login);
     }
 }

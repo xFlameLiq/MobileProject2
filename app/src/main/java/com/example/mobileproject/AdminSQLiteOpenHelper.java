@@ -1,0 +1,26 @@
+package com.example.mobileproject;
+
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+import androidx.annotation.Nullable;
+
+public class AdminSQLiteOpenHelper extends SQLiteOpenHelper {
+
+    public AdminSQLiteOpenHelper(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+        super(context, name, factory, version);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase database) {
+        database.execSQL("create table users(id integer primary key autoincrement, name text, surname text, email text, pass text, register text, grade integer)");
+        database.execSQL("create table store(id integer primary key autoincrement, code text, description text)");
+        database.execSQL("create table subject(id integer primary key autoincrement, nameSub text, nameTea text)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+
+    }
+}
