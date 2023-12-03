@@ -30,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
         sesionUser = (SesionUser) getIntent().getSerializableExtra("User");
         txtEmailLogin = (EditText) findViewById(R.id.txtEmailLogin);
         txtPassLogin = (EditText) findViewById(R.id.txtPassLogin);
-        //cbSaveProfile = (CheckBox) findViewById(R.id.cbSaveProfile);
+        cbSaveProfile = (CheckBox) findViewById(R.id.cbSaveProfile);
         sp = getSharedPreferences("sesion", Context.MODE_PRIVATE);
         String savedUser = sp.getString("userSesion", "");
         if(savedUser != "") {
@@ -58,9 +58,9 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("pass", row.getString(4));
                 editor.putString("register", row.getString(5));
                 editor.putString("grade", row.getString(6));
-                /*if(cbSaveProfile.isChecked()) {
+                if(cbSaveProfile.isChecked()) {
                     editor.putString("userSesion", "active");
-                }*/
+                }
                 editor.commit();
                 database.close();
                 Intent intent = new Intent(this, MenuLateralActivity.class);
