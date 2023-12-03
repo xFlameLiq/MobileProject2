@@ -29,5 +29,9 @@
             android:id="@+id/fragment_location"
             android:icon="@mipmap/img_4"
             android:title="@string/menu_location" />
+        <item
+            android:id="@+id/notification"
+            android:icon="@drawable/baseline_add_alarm_24"
+            android:title="Agendar" />
     </group>
 </menu>
