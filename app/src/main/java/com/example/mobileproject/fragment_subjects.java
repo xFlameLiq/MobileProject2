@@ -93,9 +93,9 @@ public class fragment_subjects extends Fragment {
         btnRefreshSubjects = rootView.findViewById(R.id.btnRefresh);
 
 
-        sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
-        int verificador = sesionUser.users.verificador;
-        subjects = sesionUser.users.user[verificador].getSubjects();
+        // sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
+        // int verificador = sesionUser.users.verificador;
+        // subjects = sesionUser.users.user[verificador].getSubjects();
 
 
 
@@ -104,7 +104,7 @@ public class fragment_subjects extends Fragment {
         btnAddSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!(txtNameSub.getText().toString().equals("") || txtTeachSub.getText().toString().equals(""))) {
+                /*if(!(txtNameSub.getText().toString().equals("") || txtTeachSub.getText().toString().equals(""))) {
                     sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
                     int verificador = (sesionUser.users.returnUser());
                     int idSubjects = sesionUser.users.addSubjectCount();
@@ -118,7 +118,7 @@ public class fragment_subjects extends Fragment {
                     Toast.makeText(getContext(), "Materia agregada correctamente", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Favor de llenar todos los campos", Toast.LENGTH_SHORT).show();
-                }
+                }*/
 
             }
         });
@@ -126,7 +126,7 @@ public class fragment_subjects extends Fragment {
         btnRefreshSubjects.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
+                /*sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
                 int size = sesionUser.users.user[verificador].getSubjects().size();
                 int verificador = (sesionUser.users.returnUser());
                 String infoPerfil = "";
@@ -136,7 +136,7 @@ public class fragment_subjects extends Fragment {
                             "Profesor: " + sesionUser.users.user[verificador].getSubjects().get(i).getNameTea()+ "\n\n";
                 }
 
-                txtDebug.setText(infoPerfil);
+                txtDebug.setText(infoPerfil);*/
             }
         });
         // Inflate the layout for this fragment
