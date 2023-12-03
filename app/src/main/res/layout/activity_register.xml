@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:animateLayoutChanges="false"
-    android:background="#FAB440"
+    android:background="@drawable/registerfond"
     tools:context=".RegisterActivity">
 
     <EditText
@@ -248,13 +248,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.074"
         tools:layout_editor_absoluteX="96dp" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="420dp"
-        android:layout_height="905dp"
-        app:srcCompat="@drawable/vector_1"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="144dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
