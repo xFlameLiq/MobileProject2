@@ -4,29 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/fondogradient"
+    android:background="@mipmap/fondocalendar"
     tools:context=".ui.slideshow.SlideshowFragment">
 
     <TextView
         android:id="@+id/txtTitleCalendar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="#F78F1F"
+        android:layout_marginTop="4dp"
         android:gravity="center"
         android:text="@string/titleCalendar"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="27sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView6"
-        android:layout_width="397dp"
-        android:layout_height="328dp"
-        android:layout_marginTop="141dp"
+        android:layout_width="343dp"
+        android:layout_height="253dp"
+        android:layout_marginTop="152dp"
         android:src="@mipmap/calendar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
