@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         registry.put("email", "admin@admin.com");
         registry.put("pass", "adminadmin");
         registry.put("register", "00000000");
-        registry.put("grade", 8);
+        registry.put("grade", "6P");
         database.insert("users", null, registry);
         database.close();
     }

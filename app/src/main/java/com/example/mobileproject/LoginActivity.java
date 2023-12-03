@@ -47,7 +47,7 @@ public class LoginActivity extends AppCompatActivity {
             String pass = txtPassLogin.getText().toString();
 
             Cursor row = database.rawQuery
-                    ("select id, name, surname, email, pass, register, grade from users where email = '" + email + "' and pass = '" + pass + "' ", null);
+                    ("select * from users where email = '" + email + "' and pass = '" + pass + "' ", null);
             if(row.moveToFirst()) {
                 Toast.makeText(this, "Usuario encontrado", Toast.LENGTH_SHORT).show();
                 SharedPreferences.Editor editor = sp.edit();
@@ -58,9 +58,9 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("pass", row.getString(4));
                 editor.putString("register", row.getString(5));
                 editor.putString("grade", row.getString(6));
-                if(cbSaveProfile.isChecked()) {
+                /*if(cbSaveProfile.isChecked()) {
                     editor.putString("userSesion", "active");
-                }
+                }*/
                 editor.commit();
                 database.close();
                 Intent intent = new Intent(this, MenuLateralActivity.class);
