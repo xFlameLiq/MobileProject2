@@ -17,9 +17,6 @@
             android:name=".ContActivity"
             android:exported="false" />
         <activity
-            android:name=".ContadorActivity"
-            android:exported="false" />
-        <activity
             android:name=".NotificationActivity"
             android:exported="false" />
         <activity
