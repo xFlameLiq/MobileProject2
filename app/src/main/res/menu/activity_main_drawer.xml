@@ -33,5 +33,9 @@
             android:id="@+id/notification"
             android:icon="@drawable/baseline_add_alarm_24"
             android:title="Alarm" />
+        <item
+            android:id="@+id/ContActivity"
+            android:icon="@mipmap/img_6"
+            android:title="Counter" />
     </group>
 </menu>
