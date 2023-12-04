@@ -8,13 +8,13 @@
             <LayoutPositions>
               <option name="myPositions">
                 <map>
-                  <entry key="contActivity">
+                  <entry key="ContActivity">
                     <value>
                       <LayoutPositions>
                         <option name="myPosition">
                           <Point>
-                            <option name="x" value="-30" />
-                            <option name="y" value="-402" />
+                            <option name="x" value="12" />
+                            <option name="y" value="12" />
                           </Point>
                         </option>
                       </LayoutPositions>
@@ -87,6 +87,18 @@
                           <Point>
                             <option name="x" value="500" />
                             <option name="y" value="12" />
+                          </Point>
+                        </option>
+                      </LayoutPositions>
+                    </value>
+                  </entry>
+                  <entry key="scannerActivity">
+                    <value>
+                      <LayoutPositions>
+                        <option name="myPosition">
+                          <Point>
+                            <option name="x" value="-30" />
+                            <option name="y" value="-249" />
                           </Point>
                         </option>
                       </LayoutPositions>

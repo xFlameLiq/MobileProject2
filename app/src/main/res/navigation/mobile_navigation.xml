@@ -42,4 +42,9 @@
         android:name="com.example.mobileproject.ContActivity"
         android:label="Counter"
         tools:layout="@layout/activity_cont" />
+    <activity
+        android:id="@+id/ScannerActivity"
+        android:name="com.example.mobileproject.ScannerActivity"
+        android:label="Scanner"
+        tools:layout="@layout/activity_scanner" />
 </navigation>
