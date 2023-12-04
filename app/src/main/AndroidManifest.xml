@@ -14,6 +14,9 @@
         android:theme="@style/Theme.MobileProject"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityVideoView"
+            android:exported="false" />
+        <activity
             android:name=".ContActivity"
             android:exported="false" />
         <activity
