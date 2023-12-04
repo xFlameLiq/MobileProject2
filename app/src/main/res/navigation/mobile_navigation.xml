@@ -37,4 +37,9 @@
         android:name="com.example.mobileproject.fragment_location"
         android:label="Location"
         tools:layout="@layout/fragment_location" />
+    <activity
+        android:id="@+id/ContActivity"
+        android:name="com.example.mobileproject.ContActivity"
+        android:label="Counter"
+        tools:layout="@layout/activity_cont" />
 </navigation>
