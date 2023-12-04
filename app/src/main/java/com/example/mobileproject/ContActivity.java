@@ -1,48 +1,57 @@
 package com.example.mobileproject;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class ContActivity extends AppCompatActivity  implements SensorEventListener{
+import androidx.appcompat.app.AppCompatActivity;
+
+public class ContActivity extends AppCompatActivity implements SensorEventListener {
 
     private SensorManager sensorManager;
+    private Sensor stepSensor;
     private boolean running = false;
-    private float totalSteps = 0f;
-    private float previousTotalSteps = 0f;
+    private float totalSteps = 0;
+    private float previousTotalSteps = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cont);
 
-
         loadData();
         resetSteps();
 
         sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+
+        if (checkSelfPermission(android.Manifest.permission.ACTIVITY_RECOGNITION) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{android.Manifest.permission.ACTIVITY_RECOGNITION}, 1);
+
+        } else {
+            stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+
+            if (stepSensor == null) {
+                Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
+            } else {
+                sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
+            }
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         running = true;
-
-        Sensor stepSensor = sensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
-
-        if (stepSensor == null) {
-            Toast.makeText(this, "No sensor detected on this device", Toast.LENGTH_SHORT).show();
-        } else {
-            sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
-        }
     }
 
     @Override
@@ -69,9 +78,6 @@ public class ContActivity extends AppCompatActivity  implements SensorEventListe
     }
 
     private void saveData() {
-        // Shared Preferences will allow us to save
-        // and retrieve data in the form of key,value pair.
-        // In this function we will save data
         Context context = getApplicationContext();
         SharedPreferences sharedPreferences = context.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -80,7 +86,6 @@ public class ContActivity extends AppCompatActivity  implements SensorEventListe
     }
 
     private void loadData() {
-        // In this function we will retrieve data
         Context context = getApplicationContext();
         SharedPreferences sharedPreferences = context.getSharedPreferences("myPrefs", Context.MODE_PRIVATE);
         float savedNumber = sharedPreferences.getFloat("key1", 0f);
@@ -91,5 +96,31 @@ public class ContActivity extends AppCompatActivity  implements SensorEventListe
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
         // We do not have to write anything in this function for this app
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 1) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                sensorManager.registerListener(this, stepSensor, SensorManager.SENSOR_DELAY_UI);
+            } else {
+                Toast.makeText(this, "Permission Denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        running = false;
+        saveData();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        sensorManager.unregisterListener(this);
     }
 }
