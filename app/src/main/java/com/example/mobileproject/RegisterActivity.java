@@ -2,7 +2,9 @@ package com.example.mobileproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -41,24 +43,27 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void register(View view) {
+        AdminSQLiteOpenHelper initDatabase = new AdminSQLiteOpenHelper(this, "database", null, 1);
+        SQLiteDatabase database = initDatabase.getWritableDatabase();
         String nombre = txtNameRegister.getText().toString();
         String apellido = txtLastRegister.getText().toString();
         String email = txtEmailRegister.getText().toString();
         String pass = txtPassRegister.getText().toString();
         String registro = txtStudentIDRegister.getText().toString();
-
-        int grado = Integer.parseInt(spGrade.getSelectedItem().toString());
+        String grado = spGrade.getSelectedItem().toString();
+        //int grado = Integer.parseInt(spGrade.getSelectedItem().toString());
 
         if(!(nombre.equals("") || apellido.equals("") || email.equals("") || pass.equals("") || registro.equals(""))) {
-
-            User user = new User(0, nombre, apellido, email, pass, registro, grado, subjects);
-            int successful = sesionUser.users.addUser(user);
-            if (successful > 0) {
-                Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show();
-                goToLogin(view);
-            } else {
-                Toast.makeText(this, "LIMITE ALCANZADO", Toast.LENGTH_SHORT).show();
-            }
+            ContentValues registry = new ContentValues();
+            registry.put("name", nombre);
+            registry.put("surname", apellido);
+            registry.put("email", email);
+            registry.put("pass", pass);
+            registry.put("register", registro);
+            registry.put("grade", grado);
+            database.insert("users", null, registry);
+            Toast.makeText(this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+            database.close();
         }
 
         else {

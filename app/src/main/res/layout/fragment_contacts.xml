@@ -38,14 +38,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/lbShowInfoStudent" />
+            app:layout_constraintTop_toBottomOf="@+id/txtInfoStudent" />
 
         <TextView
             android:id="@+id/textView10"
             android:layout_width="349dp"
             android:layout_height="35dp"
             android:layout_marginTop="26dp"
-            android:text="Dierector: Akira Abraham Lozano Ocegueda"
+            android:text="Director: Akira Abraham Lozano Ocegueda"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,7 @@
             app:layout_constraintTop_toBottomOf="@+id/txtTitleSubject2" />
 
         <TextView
-            android:id="@+id/lbShowInfoStudent"
+            android:id="@+id/txtInfoStudent"
             android:layout_width="311dp"
             android:layout_height="210dp"
             android:layout_marginTop="20dp"
