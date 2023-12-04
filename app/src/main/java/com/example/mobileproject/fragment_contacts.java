@@ -1,5 +1,7 @@
 package com.example.mobileproject;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -31,7 +33,7 @@ public class fragment_contacts extends Fragment {
     private SesionUser sesionUser;
     private EditText txtRegistro;
     private Button btnFindStudent;
-    private TextView lbShowInfoStudent;
+    private TextView txtInfoStudent;
 
     public fragment_contacts() {
         // Required empty public constructor
@@ -73,10 +75,10 @@ public class fragment_contacts extends Fragment {
 
         txtRegistro = rootView.findViewById(R.id.txtRegistro);
         btnFindStudent = rootView.findViewById(R.id.btnFindStudent);
-        lbShowInfoStudent = rootView.findViewById(R.id.lbShowInfoStudent);
+        txtInfoStudent = rootView.findViewById(R.id.txtInfoStudent);
         // sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
 
-        btnFindStudent.setOnClickListener(new View.OnClickListener() {
+       /* btnFindStudent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
@@ -90,8 +92,45 @@ public class fragment_contacts extends Fragment {
                     lbShowInfoStudent.setText("Registro incorrecto...");
                 }
             }
+        });*/
+
+
+        btnFindStudent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AdminSQLiteOpenHelper initDatabase = new AdminSQLiteOpenHelper(getActivity().getBaseContext(), "database", null, 1);
+                SQLiteDatabase database = initDatabase.getWritableDatabase();
+                String studentReg = txtRegistro.getText().toString();
+                Cursor cursor = database.rawQuery("select * from users where register = '" + studentReg + "'", null);
+                if (cursor.moveToFirst()) {
+                    do {
+                        int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                        String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                        String surname = cursor.getString(cursor.getColumnIndexOrThrow("surname"));
+                        String email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
+                        String register = cursor.getString(cursor.getColumnIndexOrThrow("register"));
+                        String grade = cursor.getString(cursor.getColumnIndexOrThrow("grade"));
+
+                        String rowData = "Nombre: " + name + "\n" +
+                                "Apellido: " + surname + "\n" +
+                                "Registro: " + register + "\n" +
+                                "Correo: " + email + "\n" +
+                                "Gmail: a" + register + "@ceti.mx \n" +
+                                "Hotmail: A" + register + "@live.ceti.mx \n" +
+                                "Semestre: " + grade + " | AGO-DIC 2023\n";
+                        txtInfoStudent.append(rowData);
+                    } while (cursor.moveToNext());
+                    Toast.makeText(getActivity(), "Usuario encontrado", Toast.LENGTH_SHORT).show();
+                } else {
+                    txtInfoStudent.setText("Error 404, usuario no localizado...");
+                    Toast.makeText(getActivity(), "Usuario no encontrado", Toast.LENGTH_SHORT).show();
+                }
+
+                cursor.close();
+            }
         });
 
         return rootView;
     }
+
 }

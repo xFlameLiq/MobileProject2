@@ -26,7 +26,7 @@ public class HomeFragment extends Fragment {
     private FragmentHomeBinding binding;
     private TextView txtDatos, txtBienvenida;
     private SharedPreferences sp;
-    private String name;
+    private String name, surname, email, pass, register, grade;
 
     @SuppressLint("ResourceType")
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -40,12 +40,16 @@ public class HomeFragment extends Fragment {
         View root = binding.getRoot();
         sp = requireActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
         name = sp.getString("name", "");
+        surname = sp.getString("surname", "");
+        email = sp.getString("email", "");
+        register = sp.getString("register", "");
+        grade = sp.getString("grade", "");
 
         txtBienvenida = binding.txtBienvenida;
         txtDatos = binding.txtDatos;
 
         txtDatos.setText("");
-        txtBienvenida.setText("Bienvenido " + "prueba" + " " + "prueba");
+        txtBienvenida.setText("Bienvenido " + name + " " + surname);
 
         TableLayout tableLayout = root.findViewById(R.id.tableLayout);
 
@@ -83,12 +87,12 @@ public class HomeFragment extends Fragment {
                     break;
 
                 case 1:
-                    data1 = createTableCell("Apellido: " , false);
+                    data1 = createTableCell("Apellido: " + surname, false);
                     dataRow.addView(data1);
                     break;
 
                 case 2:
-                    data1 = createTableCell("ID: " , false);
+                    data1 = createTableCell("ID: " + register, false);
                     dataRow.addView(data1);
                     break;
             }
@@ -98,17 +102,17 @@ public class HomeFragment extends Fragment {
             switch (i) {
 
                 case 0:
-                    data2 = createTableCell("Personal: ", false);
+                    data2 = createTableCell("Personal: " + email, false);
                     dataRow.addView(data2);
                     break;
 
                 case 1:
-                    data2 = createTableCell("Gmail: a" + "@ceti.mx", false);
+                    data2 = createTableCell("Gmail: a" +register+ "@ceti.mx", false);
                     dataRow.addView(data2);
                     break;
 
                 case 2:
-                    data2 = createTableCell("Hotmail: A" + "@live.ceti.mx", false);
+                    data2 = createTableCell("Hotmail: A" +register+ "@live.ceti.mx", false);
                     dataRow.addView(data2);
                     break;
             }
@@ -118,12 +122,12 @@ public class HomeFragment extends Fragment {
             switch (i) {
 
                 case 0:
-                    data3 = createTableCell("Grado: ", false);
+                    data3 = createTableCell("Grado: " + grade, false);
                     dataRow.addView(data3);
                     break;
 
                 case 1:
-                    data3 = createTableCell("Ciclo:", false);
+                    data3 = createTableCell("Ciclo: " + "2023-B", false);
                     dataRow.addView(data3);
                     break;
 

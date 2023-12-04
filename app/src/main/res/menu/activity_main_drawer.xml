@@ -29,5 +29,17 @@
             android:id="@+id/fragment_location"
             android:icon="@mipmap/img_4"
             android:title="@string/menu_location" />
+        <item
+            android:id="@+id/notification"
+            android:icon="@drawable/baseline_add_alarm_24"
+            android:title="Alarm" />
+        <item
+            android:id="@+id/ContActivity"
+            android:icon="@mipmap/img_6"
+            android:title="Counter" />
+        <item
+            android:id="@+id/ScannerActivity"
+            android:icon="@mipmap/img_5"
+            android:title="Scanner" />
     </group>
 </menu>
