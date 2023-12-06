@@ -118,7 +118,7 @@ public class fragment_contacts extends Fragment {
                                 "Gmail: a" + register + "@ceti.mx \n" +
                                 "Hotmail: A" + register + "@live.ceti.mx \n" +
                                 "Semestre: " + grade + " | AGO-DIC 2023\n";
-                        txtInfoStudent.append(rowData);
+                        txtInfoStudent.setText(rowData);
                     } while (cursor.moveToNext());
                     Toast.makeText(getActivity(), "Usuario encontrado", Toast.LENGTH_SHORT).show();
                 } else {
