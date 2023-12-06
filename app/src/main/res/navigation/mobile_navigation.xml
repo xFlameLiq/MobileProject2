@@ -47,4 +47,14 @@
         android:name="com.example.mobileproject.ScannerActivity"
         android:label="Scanner"
         tools:layout="@layout/activity_scanner" />
+    <activity
+        android:id="@+id/notification"
+        android:name="com.example.mobileproject.NotificationActivity"
+        android:label="Notification"
+        tools:layout="@layout/activity_notification" />
+    <activity
+        android:id="@+id/RouteActivity"
+        android:name="com.example.mobileproject.RouteActivity"
+        android:label="Route"
+        tools:layout="@layout/activity_route" />
 </navigation>

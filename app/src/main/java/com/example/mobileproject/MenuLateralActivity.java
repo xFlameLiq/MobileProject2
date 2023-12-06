@@ -53,7 +53,7 @@ public class MenuLateralActivity extends AppCompatActivity {
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-        R.id.fragment_subjects, R.id.fragment_contacts, R.id.fragment_location, R.id.notification, R.id.ContActivity, R.id.ScannerActivity)
+        R.id.fragment_subjects, R.id.fragment_contacts, R.id.fragment_location, R.id.notification, R.id.ContActivity, R.id.ScannerActivity, R.id.RouteActivity)
                 .setOpenableLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_menu_lateral);
