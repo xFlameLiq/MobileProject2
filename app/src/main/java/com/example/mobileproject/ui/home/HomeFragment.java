@@ -34,7 +34,6 @@ public class HomeFragment extends Fragment {
         HomeViewModel homeViewModel =
                 new ViewModelProvider(this).get(HomeViewModel.class);
 
-        //sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
@@ -46,10 +45,8 @@ public class HomeFragment extends Fragment {
         grade = sp.getString("grade", "");
 
         txtBienvenida = binding.txtBienvenida;
-        txtDatos = binding.txtDatos;
 
-        txtDatos.setText("");
-        txtBienvenida.setText("Bienvenido " + name + " " + surname);
+        txtBienvenida.setText("Bienvenido: " + name + " " + surname + "!");
 
         TableLayout tableLayout = root.findViewById(R.id.tableLayout);
 
