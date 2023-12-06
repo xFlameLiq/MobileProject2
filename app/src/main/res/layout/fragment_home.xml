@@ -12,7 +12,7 @@
         android:id="@+id/imageView3"
         android:layout_width="251dp"
         android:layout_height="219dp"
-        android:layout_marginBottom="400dp"
+        android:layout_marginBottom="420dp"
         android:src="@mipmap/logo_ceti"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,6 @@
         android:id="@+id/txtBienvenida"
         android:layout_width="219dp"
         android:layout_height="69dp"
-        android:layout_marginTop="14dp"
         android:text="Bienvenido"
         android:textAlignment="center"
         android:textColor="#070707"
@@ -35,9 +34,8 @@
 
     <TextView
         android:id="@+id/txtDatos"
-        android:layout_width="415dp"
-        android:layout_height="331dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
         android:text="@string/data"
         android:textAlignment="center"
         android:textColor="#0E0E0E"
@@ -50,15 +48,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="95dp"
+            android:layout_marginTop="120dp"
             android:background="@drawable/table_border">
 
         </TableLayout>

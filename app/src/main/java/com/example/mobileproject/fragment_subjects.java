@@ -1,5 +1,10 @@
 package com.example.mobileproject;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,18 +12,14 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.mobileproject.databinding.FragmentHomeBinding;
 import com.example.mobileproject.databinding.FragmentSubjectsBinding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,10 +38,12 @@ public class fragment_subjects extends Fragment {
     private String mParam2;
 
     private SesionUser sesionUser;
-    private TextView txtDebug;
+    private TextView txtShowSubs;
     private EditText txtNameSub, txtTeachSub;
     private Subjects subjectsObj;
     private ArrayList<Subjects> subjects;
+    SharedPreferences sp;
+    private String name, surname, email, pass, register, grade;
 
     private Button btnAddSubject, btnRefreshSubjects;
 
@@ -86,11 +89,17 @@ public class fragment_subjects extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_subjects, container, false);
 
-        txtDebug = rootView.findViewById(R.id.txtDebug);
+        txtShowSubs = rootView.findViewById(R.id.txtShowSubs);
         txtNameSub = rootView.findViewById(R.id.txtNameSub);
         txtTeachSub = rootView.findViewById(R.id.txtTeachSub);
         btnAddSubject = rootView.findViewById(R.id.btnAddSubject);
         btnRefreshSubjects = rootView.findViewById(R.id.btnRefresh);
+        sp = requireActivity().getSharedPreferences("sesion", Context.MODE_PRIVATE);
+        name = sp.getString("name", "");
+        surname = sp.getString("surname", "");
+        email = sp.getString("email", "");
+        register = sp.getString("register", "");
+        grade = sp.getString("grade", "");
 
 
         // sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
@@ -104,21 +113,24 @@ public class fragment_subjects extends Fragment {
         btnAddSubject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*if(!(txtNameSub.getText().toString().equals("") || txtTeachSub.getText().toString().equals(""))) {
-                    sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
-                    int verificador = (sesionUser.users.returnUser());
-                    int idSubjects = sesionUser.users.addSubjectCount();
+                if(!(txtNameSub.getText().toString().equals("") || txtTeachSub.getText().toString().equals(""))) {
                     String nameSub = txtNameSub.getText().toString();
-                    String nameTeacher = txtTeachSub.getText().toString();
-                    subjectsObj = new Subjects(idSubjects, nameSub, nameTeacher);
-                    subjects.add(subjectsObj);
-                    sesionUser.users.user[verificador].setSubjects(subjects);
+                    String nameTea = txtTeachSub.getText().toString();
+
+                    AdminSQLiteOpenHelper initDatabase = new AdminSQLiteOpenHelper(getActivity().getBaseContext(), "database", null, 1);
+                    SQLiteDatabase database = initDatabase.getWritableDatabase();
+                    ContentValues registry = new ContentValues();
+                    registry.put("nameSub", nameSub);
+                    registry.put("nameTea", nameTea);
+                    registry.put("register", register);
+                    database.insert("subjects", null, registry);
+                    database.close();
                     txtNameSub.setText("");
                     txtTeachSub.setText("");
                     Toast.makeText(getContext(), "Materia agregada correctamente", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getContext(), "Favor de llenar todos los campos", Toast.LENGTH_SHORT).show();
-                }*/
+                }
 
             }
         });
@@ -126,17 +138,29 @@ public class fragment_subjects extends Fragment {
         btnRefreshSubjects.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*sesionUser = (SesionUser) getActivity().getIntent().getSerializableExtra("User");
-                int size = sesionUser.users.user[verificador].getSubjects().size();
-                int verificador = (sesionUser.users.returnUser());
-                String infoPerfil = "";
-                for (int i = 1; i < size; i++) {
-                    infoPerfil += "Identificador: " + sesionUser.users.user[verificador].getSubjects().get(i).getId() + "\n" +
-                            "Materia: " + sesionUser.users.user[verificador].getSubjects().get(i).getNameSub() + "\n" +
-                            "Profesor: " + sesionUser.users.user[verificador].getSubjects().get(i).getNameTea()+ "\n\n";
+                AdminSQLiteOpenHelper initDatabase = new AdminSQLiteOpenHelper(getActivity().getBaseContext(), "database", null, 1);
+                SQLiteDatabase database = initDatabase.getWritableDatabase();
+                Cursor cursor = database.rawQuery("select * from subjects where register = '" + register + "'", null);
+                txtShowSubs.setText("");
+                if (cursor.moveToFirst()) {
+                    do {
+
+                        int id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+                        String nameSub = cursor.getString(cursor.getColumnIndexOrThrow("nameSub"));
+                        String nameTea = cursor.getString(cursor.getColumnIndexOrThrow("nameTea"));
+                        String register = cursor.getString(cursor.getColumnIndexOrThrow("register"));
+
+                        String rowData = "Nombre de la materia: " + nameSub + "\n" +
+                                "Nombre del profesor: " + nameTea + "\n\n";
+                        txtShowSubs.append(rowData);
+                    } while (cursor.moveToNext());
+                    Toast.makeText(getActivity(), "Mostrando materias", Toast.LENGTH_SHORT).show();
+                } else {
+                    txtShowSubs.setText("Error 404, materias no añadidas aún...");
+                    Toast.makeText(getActivity(), "Materias no encontradas", Toast.LENGTH_SHORT).show();
                 }
 
-                txtDebug.setText(infoPerfil);*/
+                cursor.close();
             }
         });
         // Inflate the layout for this fragment

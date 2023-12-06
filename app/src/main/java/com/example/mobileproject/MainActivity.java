@@ -28,6 +28,19 @@ public class MainActivity extends AppCompatActivity {
         registry.put("register", "00000000");
         registry.put("grade", "6P");
         database.insert("users", null, registry);
+
+        ContentValues product1 = new ContentValues();
+        product1.put("code", "7501032300104");
+        product1.put("description", "Licuado Danone, precio: 22.5$");
+        database.insert("store", null, product1);
+
+        ContentValues product2 = new ContentValues();
+        product2.put("code", "9573");
+        product2.put("description", "Cuchillo mariposa, precio: 130$");
+        database.insert("store", null, product2);
+
+
+
         database.close();
     }
 

@@ -147,6 +147,7 @@ public class HomeFragment extends Fragment {
 
         // Ajustar el ancho de las filas al 100% del ancho de pantalla
         tableLayout.setStretchAllColumns(true);
+        tableLayout.setShrinkAllColumns(true);
 
 
         final TextView textView = binding.txtBienvenida;
